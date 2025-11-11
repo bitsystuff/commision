@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitsy's Unprofessional Website Commissions</title>
+    <style>
+        body {
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            margin: 20px;
+            padding: 0;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        header {
+            background: linear-gradient(135deg, #1e1e2e, #2a2a3e);
+            color: #c792ea;
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+            box-shadow: 0 0 20px rgba(199, 146, 234, 0.3);
+            width: 100%;
+            max-width: 1200px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="%23ffffff" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            pointer-events: none;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            font-weight: 500;
+            text-shadow: 0 0 10px rgba(199, 146, 234, 0.5);
+        }
+        header p {
+            font-size: 1.2em;
+            margin-top: 15px;
+        }
+        section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            width: 100%;
+            position: relative;
+            margin: 20px 0;
+        }
+        section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #c792ea, transparent);
+        }
+        h2 {
+            color: #82aaff;
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-shadow: 0 0 5px rgba(130, 170, 255, 0.5);
+        }
+        .card {
+            background: rgba(30, 30, 46, 0.8);
+            border: 1px solid rgba(199, 146, 234, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(199, 146, 234, 0.4);
+            border-color: #c792ea;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        ul li {
+            background: rgba(26, 26, 38, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #82aaff;
+            transition: all 0.3s ease;
+        }
+        ul li:hover {
+            background: rgba(42, 42, 62, 0.9);
+            transform: translateY(-5px) rotate(1deg);
+            box-shadow: 0 5px 15px rgba(130, 170, 255, 0.3);
+        }
+        a {
+            color: #c792ea;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #82aaff;
+            text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(18, 18, 24, 0.9);
+            color: #9ca3af;
+            border-top: 1px solid rgba(199, 146, 234, 0.2);
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 20px;
+            border-radius: 12px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            body { margin: 15px; }
+            header h1 { font-size: 2.5em; }
+            header p { font-size: 1.1em; }
+            section { padding: 50px 15px; }
+            h2 { font-size: 1.8em; }
+            ul { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+        }
+        @media (max-width: 768px) {
+            body { margin: 10px; }
+            header { padding: 60px 15px; }
+            header h1 { font-size: 2em; }
+            header p { font-size: 1em; }
+            section { padding: 40px 10px; }
+            h2 { font-size: 1.5em; margin-bottom: 20px; }
+            .card { padding: 15px; margin: 15px 0; }
+            ul { grid-template-columns: 1fr; gap: 15px; }
+            ul li { padding: 15px; border-left-width: 3px; }
+            footer { padding: 20px 10px; }
+        }
+        @media (max-width: 480px) {
+            body { margin: 5px; }
+            header h1 { font-size: 1.8em; }
+            header p { font-size: 0.9em; }
+            section { padding: 30px 10px; }
+            h2 { font-size: 1.3em; }
+            .card { padding: 12px; }
+            ul li { padding: 12px; }
+            footer { padding: 15px 10px; font-size: 0.9em; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bitsy's Unprofessional Website Commissions</h1>
+        <p>Affordable custom websites — simple, clean, and functional. Perfect for small projects, personal pages, or portfolios.</p>
+    </header>
+
+    <section id="offer" class="card">
+        <h2>👨‍💻 What I Offer</h2>
+        <ul>
+            <li><strong>Small-scale static websites:</strong> Built with HTML, CSS, JS.</li>
+            <li><strong>No backend:</strong> To keep things affordable and simple.</li>
+            <li><strong>Responsive layouts:</strong> That look great on desktop & mobile.</li>
+            <li><strong>Optional hosting setup:</strong> E.g., GitHub Pages for free.</li>
+        </ul>
+    </section>
+
+    <section id="pricing" class="card">
+        <h2>💰 Pricing</h2>
+        <p>Typically between $5 – $25, depending on complexity. Message me with your idea for a quick quote.</p>
+    </section>
+
+    <section id="greatfor" class="card">
+        <h2>📄 Great For</h2>
+        <ul>
+            <li>Personal “about me” pages</li>
+            <li>Portfolios or link hubs</li>
+            <li>Small business info sites</li>
+            <li>Project or event pages</li>
+        </ul>
+    </section>
+
+    <section id="notes" class="card">
+        <h2>⚠️ Notes</h2>
+        <p>I’m not a professional developer — just someone who enjoys building small, functional websites. You’ll get a clean, working site made with care and attention to detail (without breaking your wallet).</p>
+    </section>
+
+    <section id="payment" class="card">
+        <h2>💳 Payment Methods</h2>
+        <p>Currently, I have limited payment methods. I'll try using PayPal again, but I don't recommend it as it may block the payment (Example: Aunt sent me 50 Euro and it got stolen by PayPal).</p>
+        <p>Current available payment methods are:</p>
+        <ul>
+            <li><strong>BLIK (via Number):</strong> Poland Only</li>
+            <li><strong>PaySafeCard (Code via Eneba):</strong> International (MUST BE PLN!)</li>
+        </ul>
+    </section>
+
+    <section id="commission" class="card">
+        <h2>📬 How to Commission</h2>
+        <p>DM on Discord @vr soon</p>
+        <p>DM on Instagram @bitsyisback</p>
+    </section>
+
+    <section id="examples" class="card">
+        <h2>Example Websites</h2>
+        <p>Check out some sites I've made:</p>
+        <ul>
+            <li><a href="https://fenstore.nya.pub/" target="_blank">https://fenstore.nya.pub/</a></li>
+            <li><a href="https://bitsyhost.pl/" target="_blank">https://bitsyhost.pl/ (Polish Only)</a></li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 BitsyTheFurry. All rights (not) reserved (as i didnt copyright anything :P)</p>
+    </footer>
+</body>
+</html>
